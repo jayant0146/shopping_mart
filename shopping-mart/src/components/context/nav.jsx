@@ -19,4 +19,4 @@ const NavProvider = ({ children }) => {
 //custom hook
 const useNav = () => useContext(NavContext);
 
-export { useNav, NavProvider };
+export { useNav, NavProvider }; 

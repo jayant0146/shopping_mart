@@ -4,6 +4,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios"
 import { useNav } from "../components/context/nav";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Container = styled.div`
   width: 100vw;
@@ -68,15 +70,18 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('123', password, email);
     try {
       const res = await axios.post('/api/v1/auth/login', { email, password });
+      const msg = res.data.message;
       if (res && res.data.success) {
+        toast.success("Login Successfully")
         setNav(true);
         localStorage.setItem('nav', true);
         navigate('/');
       }
+      else toast.warn(msg);
     } catch (error) {
+      toast.warn("Error in Login Window!");
       console.log(error);
     }
   }
@@ -86,11 +91,12 @@ const Login = () => {
       <Wrapper>
         <Title>SIGN IN</Title>
         <Form>
-          <Input type="email" placeholder="email" onChange={(e) => { setEmail(e.target.value) }} />
-          <Input type="password" placeholder="password" onChange={(e) => { setPassword(e.target.value) }} />
+          <Input type="text" placeholder="Email" onChange={(e) => { setEmail(e.target.value) }} />
+          <Input type="password" placeholder="Password" onChange={(e) => { setPassword(e.target.value) }} />
           <Button onClick={handleSubmit}>LOGIN</Button>
           <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
           <Link>CREATE A NEW ACCOUNT</Link>
+          <ToastContainer />
         </Form>
       </Wrapper>
     </Container>

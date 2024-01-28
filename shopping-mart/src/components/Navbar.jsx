@@ -17,6 +17,7 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  box-shadow: 0px 8px 6px -6px gray;
   ${mobile({ padding: "10px 0px" })}
 `;
 
@@ -66,6 +67,10 @@ const Right = styled.div`
 const MenuItem = styled.div`
   font-size: 14px;
   cursor: pointer;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  padding: 5px;
   margin-left: 25px;
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
 `;

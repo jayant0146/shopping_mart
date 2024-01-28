@@ -30,3 +30,9 @@ To make the website responsive, make one file for that and in the styled compone
 
 HTML Knowledge
 span tag: span is very similar to the div tag, but div is a block-level tag and span is an inline tag. used for the grouping of inline element
+
+SEO: Search Engine Optimisation. Basically use of such keywords to rank our websites higher.
+Search react-helmet on npmjs.com. Install it and 
+
+With axios, we can directly communicate with the client, for get, post everything 
+With toastify, we can place in the notifications attractively

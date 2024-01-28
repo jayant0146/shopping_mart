@@ -79,60 +79,61 @@ const Payment = styled.img`
 `;
 
 const Footer = () => {
-    return (
-        <Container>
-            <Left>
-                <Logo>LAMA.</Logo>
-                <Desc>
-                    There are many variations of passages of Lorem Ipsum available, but
-                    the majority have suffered alteration in some form, by injected
-                    humour, or randomised words which don’t look even slightly believable.
-                </Desc>
-                <SocialContainer>
-                    <SocialIcon color="3B5999">
-                        <FacebookOutlined />
-                    </SocialIcon>
-                    <SocialIcon color="E4405F">
-                        <InstagramIcon />
-                    </SocialIcon>
-                    <SocialIcon color="55ACEE">
-                        <TwitterIcon />
-                    </SocialIcon>
-                    <SocialIcon color="E60023">
-                        <PinterestIcon />
-                    </SocialIcon>
-                </SocialContainer>
-            </Left>
-            <Center>
-                <Title>Useful Links</Title>
-                <List>
-                    <ListItem>Home</ListItem>
-                    <ListItem>Cart</ListItem>
-                    <ListItem>Man Fashion</ListItem>
-                    <ListItem>Woman Fashion</ListItem>
-                    <ListItem>Accessories</ListItem>
-                    <ListItem>My Account</ListItem>
-                    <ListItem>Order Tracking</ListItem>
-                    <ListItem>Wishlist</ListItem>
-                    <ListItem>Wishlist</ListItem>
-                    <ListItem>Terms</ListItem>
-                </List>
-            </Center>
-            <Right>
-                <Title>Contact</Title>
-                <ContactItem>
-                    <MapsHomeWorkIcon style={{ marginRight: "10px" }} /> 622 Dixie Path , South Tobinchester 98336
-                </ContactItem>
-                <ContactItem>
-                    <CallIcon style={{ marginRight: "10px" }} /> +1 234 56 78
-                </ContactItem>
-                <ContactItem>
-                    <MailOutlineIcon style={{ marginRight: "10px" }} /> contact@lama.dev
-                </ContactItem>
-                <Payment src="https://i.ibb.co/Qfvn4z6/payment.png" />
-            </Right>
-        </Container>
-    );
+  return (
+    <Container>
+      <Left>
+        <Logo>LAMA.</Logo>
+        <Desc>
+          There are many variations of passages of Lorem Ipsum available, but
+          the majority have suffered alteration in some form, by injected
+          humour, or randomised words which don’t look even slightly believable.
+        </Desc>
+        <SocialContainer>
+          <SocialIcon color="3B5999">
+            <FacebookOutlined />
+          </SocialIcon>
+          <SocialIcon color="E4405F">
+            <InstagramIcon />
+          </SocialIcon>
+          <SocialIcon color="55ACEE">
+            <TwitterIcon />
+          </SocialIcon>
+          <SocialIcon color="E60023">
+            <PinterestIcon />
+          </SocialIcon>
+        </SocialContainer>
+      </Left>
+      <Center>
+        <Title>Useful Links</Title>
+        <List>
+          <ListItem>Home</ListItem>
+          <ListItem>Cart</ListItem>
+          <ListItem>Man Fashion</ListItem>
+          <ListItem>Woman Fashion</ListItem>
+          <ListItem>Accessories</ListItem>
+          <ListItem>My Account</ListItem>
+          <ListItem>Order Tracking</ListItem>
+          <ListItem>Wishlist</ListItem>
+          <ListItem>Wishlist</ListItem>
+          <ListItem>Terms</ListItem>
+        </List>
+      </Center>
+      <Right>
+        <Title>Contact</Title>
+        <ContactItem>For any query and Info about the Products, Feel Free to call us. We're 24 X 7 available</ContactItem>
+        <ContactItem>
+          <MapsHomeWorkIcon style={{ marginRight: "10px" }} /> 622 Path, Jhansi U.P. 284001
+        </ContactItem>
+        <ContactItem>
+          <CallIcon style={{ marginRight: "10px" }} /> +91 6386172096
+        </ContactItem>
+        <ContactItem>
+          <MailOutlineIcon style={{ marginRight: "10px" }} /> sahujayant046@gmail.com
+        </ContactItem>
+        <Payment src="https://i.ibb.co/Qfvn4z6/payment.png" />
+      </Right>
+    </Container>
+  );
 };
 
 export default Footer;

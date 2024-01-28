@@ -4,10 +4,12 @@ import { useScrollTrigger } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Container = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: 90vh;
   background: linear-gradient(
       rgba(255, 255, 255, 0.5),
       rgba(255, 255, 255, 0.5)
@@ -62,41 +64,69 @@ const Button = styled.button`
 `;
 
 const Register = () => {
-  const [fname, setFname] = useState('');
-  const [lname, setLname] = useState('');
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [phone, setPhone] = useState('');
+  const [address, setAddress] = useState('');
 
   const navigate = useNavigate();
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log('123')
-    try {
-      const res = await axios.post('/api/v1/auth/register', { fname, lname, email, password });
-      if (res && res.data.success) {
-        navigate('/login');
+  function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+
+  function areAllCharactersNumbers(phone) {
+    for (let i = 0; i < phone.length; i++) {
+      if (isNaN(parseInt(phone[i]))) {
+        return false;
       }
-    } catch (error) {
-      console.log(error);
+    }
+    return true;
+  }
+  const handleSubmit = async (e) => {
+    e.preventDefault(); //To prevent refreshing everytime
+    if (!isValidEmail(email) && email.length !== 0) toast.warn("Enter valid Email Address");
+    else if ((!areAllCharactersNumbers(phone) || phone.length !== 10) && phone.length !== 0)
+      toast.warn("Enter valid Phone");
+    // if (phone.length !== 10 && phone.length !== 0) toast.warn("Enter valid Email Address");
+    else {
+      try {
+        const res = await axios.post('/api/v1/auth/register', { name, email, password, phone, address });
+        const msg = res.data.message;
+        if (res && res.data.success) {
+          toast("Registered Successfully!");
+          navigate('/login');
+        }
+        else toast.warn(msg);
+      } catch (error) {
+        toast("Error in Registration!");
+        console.log(error);
+      }
     }
   }
-  return (
+
+  return (<>
+    <Navbar />
     <Container>
+
       <Wrapper>
         <Title>CREATE AN ACCOUNT</Title>
         <Form>
-          <Input type=" text" placeholder="first name" onChange={(e) => { setFname(e.target.value) }} />
-          <Input type=" text" placeholder="last name" onChange={(e) => { setLname(e.target.value) }} />
-          <Input type="email" placeholder="email" onChange={(e) => { setEmail(e.target.value) }} />
-          <Input type="password" placeholder="password" onChange={(e) => { setPassword(e.target.value) }} />
+          <Input type=" text" placeholder="Name" onChange={(e) => { setName(e.target.value) }} required />
+          <Input type="email" placeholder="EMail" onChange={(e) => { setEmail(e.target.value) }} required />
+          <Input type="password" placeholder="Password" onChange={(e) => { setPassword(e.target.value) }} required />
+          <Input type=" text" placeholder="Phone" onChange={(e) => { setPhone(e.target.value) }} required />
+          <Input type=" text" placeholder="Address" onChange={(e) => { setAddress(e.target.value) }} required />
           <Agreement>
             By creating an account, I consent to the processing of my personal
             data in accordance with the <b>PRIVACY POLICY</b>
           </Agreement>
           <Button onClick={handleSubmit}>REGISTER</Button>
+          <ToastContainer />
         </Form>
       </Wrapper>
-    </Container>
+    </Container></>
   );
 };
 

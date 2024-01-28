@@ -10,6 +10,9 @@ import Product from './pages/Product'
 import Register from './pages/Register'
 import Login from './pages/Login'
 import Cart from './pages/Cart'
+import Page404 from './pages/Page404';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   return (
@@ -43,6 +46,11 @@ const App = () => {
 
         <Routes>
           <Route path="/cart" element={<Cart />} >
+          </Route>
+        </Routes>
+
+        <Routes>
+          <Route path="*" element={<Page404 />} >
           </Route>
         </Routes>
       </BrowserRouter>
