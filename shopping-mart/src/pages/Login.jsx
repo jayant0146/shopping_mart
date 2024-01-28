@@ -95,12 +95,13 @@ const Login = () => {
           <Input type="password" placeholder="Password" onChange={(e) => { setPassword(e.target.value) }} />
           <Button onClick={handleSubmit}>LOGIN</Button>
           <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
-          <Link>CREATE A NEW ACCOUNT</Link>
+          <Link href="/register">CREATE A NEW ACCOUNT</Link>
           <ToastContainer />
         </Form>
       </Wrapper>
     </Container>
   );
 };
+
 
 export default Login;

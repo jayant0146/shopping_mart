@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Container = styled.div`
   width: 100vw;
-  height: 90vh;
+  height: 100vh;
   background: linear-gradient(
       rgba(255, 255, 255, 0.5),
       rgba(255, 255, 255, 0.5)
@@ -63,6 +63,14 @@ const Button = styled.button`
 }
 `;
 
+const Link = styled.a`
+  margin: 5px 0px;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+`;
+
 const Register = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -107,7 +115,6 @@ const Register = () => {
   }
 
   return (<>
-    <Navbar />
     <Container>
 
       <Wrapper>
@@ -120,7 +127,8 @@ const Register = () => {
           <Input type=" text" placeholder="Address" onChange={(e) => { setAddress(e.target.value) }} required />
           <Agreement>
             By creating an account, I consent to the processing of my personal
-            data in accordance with the <b>PRIVACY POLICY</b>
+            data in accordance with the <b>PRIVACY POLICY</b> <br /><br />
+            <Link href="/login">ALREADY A USER ???</Link>
           </Agreement>
           <Button onClick={handleSubmit}>REGISTER</Button>
           <ToastContainer />
