@@ -77,6 +77,7 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [phone, setPhone] = useState('');
   const [address, setAddress] = useState('');
+  const [answer, setAnswer] = useState('');
 
   const navigate = useNavigate();
   function isValidEmail(email) {
@@ -100,7 +101,7 @@ const Register = () => {
     // if (phone.length !== 10 && phone.length !== 0) toast.warn("Enter valid Email Address");
     else {
       try {
-        const res = await axios.post('/api/v1/auth/register', { name, email, password, phone, address });
+        const res = await axios.post('/api/v1/auth/register', { name, email, password, phone, address, answer });
         const msg = res.data.message;
         if (res && res.data.success) {
           toast("Registered Successfully!");
@@ -125,6 +126,7 @@ const Register = () => {
           <Input type="password" placeholder="Password" onChange={(e) => { setPassword(e.target.value) }} required />
           <Input type=" text" placeholder="Phone" onChange={(e) => { setPhone(e.target.value) }} required />
           <Input type=" text" placeholder="Address" onChange={(e) => { setAddress(e.target.value) }} required />
+          <Input type=" text" placeholder="What's your pet name" onChange={(e) => { setAnswer(e.target.value) }} required />
           <Agreement>
             By creating an account, I consent to the processing of my personal
             data in accordance with the <b>PRIVACY POLICY</b> <br /><br />

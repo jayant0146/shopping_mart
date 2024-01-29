@@ -13,6 +13,7 @@ import Cart from './pages/Cart'
 import Page404 from './pages/Page404';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ForgotPassword from './pages/ForgotPassword';
 
 const App = () => {
   return (
@@ -46,6 +47,11 @@ const App = () => {
 
         <Routes>
           <Route path="/cart" element={<Cart />} >
+          </Route>
+        </Routes>
+
+        <Routes>
+          <Route path="/forgotpassword" element={<ForgotPassword />} >
           </Route>
         </Routes>
 

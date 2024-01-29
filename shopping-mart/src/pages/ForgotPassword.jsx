@@ -1,9 +1,7 @@
 import styled from "styled-components";
-import Navbar from "../components/Navbar";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios"
-import { useNav } from "../components/context/nav";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -62,26 +60,24 @@ const Link = styled.a`
   cursor: pointer;
 `;
 
-const Login = () => {
+const ForgotPassword = () => {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [nav, setNav] = useNav();
+  const [answer, setAnswer] = useState("");
+  const [newpassword, setNewPassword] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('/api/v1/auth/login', { email, password });
+      const res = await axios.post('/api/v1/auth/forgotpassword', { email, answer, newpassword });
       const msg = res.data.message;
       if (res && res.data.success) {
-        toast.success("Login Successfully")
-        setNav(true);
-        localStorage.setItem('nav', true);
-        navigate('/');
+        toast.success("Password Reset Successfully")
+        navigate('/login');
       }
       else toast.warn(msg);
     } catch (error) {
-      toast.warn("Error in Login Window!");
+      toast.warn("Error while resetting the Password!");
       console.log(error);
     }
   }
@@ -89,13 +85,13 @@ const Login = () => {
   return (
     <Container>
       <Wrapper>
-        <Title>SIGN IN</Title>
+        <Title>FORGOT PASSWORD</Title>
         <Form>
-          <Input type="text" placeholder="Email" onChange={(e) => { setEmail(e.target.value) }} />
-          <Input type="password" placeholder="Password" onChange={(e) => { setPassword(e.target.value) }} />
-          <Button onClick={handleSubmit}>LOGIN</Button>
-          <Link href="/forgotpassword">DO NOT YOU REMEMBER THE PASSWORD?</Link>
-          <Link href="/register">CREATE A NEW ACCOUNT</Link>
+          <Input type="email" placeholder="Email" onChange={(e) => { setEmail(e.target.value) }} />
+          <Input type="text" placeholder="Your's Pet Name" onChange={(e) => { setAnswer(e.target.value) }} />
+          <Input type="password" placeholder="New Password" onChange={(e) => { setNewPassword(e.target.value) }} />
+          <Button onClick={handleSubmit}>UPDATE</Button>
+          <Link href="/register">BACK TO REGISTRATION WINDOW</Link>
           <ToastContainer />
         </Form>
       </Wrapper>
@@ -104,4 +100,4 @@ const Login = () => {
 };
 
 
-export default Login;
+export default ForgotPassword;

@@ -28,6 +28,10 @@ const userSchema = new mongoose.Schema({
         default: 0,
         required: true,
     },
+    answer: {
+        type: String,
+        required: true,
+    },
 },
     { timestamps: true }
 );
