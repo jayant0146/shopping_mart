@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import Navbar from "../components/Navbar";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios"
 import { useNav } from "../components/context/nav";
 import { ToastContainer, toast } from 'react-toastify';
@@ -67,6 +66,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [nav, setNav] = useNav();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();

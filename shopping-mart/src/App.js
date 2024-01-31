@@ -11,9 +11,9 @@ import Register from './pages/Register'
 import Login from './pages/Login'
 import Cart from './pages/Cart'
 import Page404 from './pages/Page404';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import ForgotPassword from './pages/ForgotPassword';
+import Dashboard from './pages/User/Dashboard';
+import PrivateRoute from './Routes/PrivateRoute';
 
 const App = () => {
   return (
@@ -32,6 +32,13 @@ const App = () => {
 
         <Routes>
           <Route path="/productlist" element={<ProductList />} >
+          </Route>
+        </Routes>
+
+        <Routes>
+          <Route path="/dashboard" element={<PrivateRoute />} >
+            <Route path="user" element={<Dashboard />} >
+            </Route>
           </Route>
         </Routes>
 

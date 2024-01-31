@@ -36,3 +36,6 @@ Search react-helmet on npmjs.com. Install it and
 
 With axios, we can directly communicate with the client, for get, post everything 
 With toastify, we can place in the notifications attractively
+
+For user and admin dashboard, create user dashboard UI. Then in authroutes use the token for keeoing signing in of the users. Then we'll access that routes in private mode so that we can protect the user dashboard from the other users.
+Important: auth.jsx, Private.jsx

@@ -10,5 +10,8 @@ router.post('/register', registerController);
 router.post('/login', loginController);
 router.post('/forgotpassword', forgotPasswordController);
 router.get('/test', requiresSignin, isAdmin, testController);
+router.get('/user-auth', requiresSignin, (req, res) => {
+    res.status(200).send({ ok: true });
+})
 
 export default router;
