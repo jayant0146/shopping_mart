@@ -20,3 +20,11 @@ Token comparison, if matched tabhi details show krayenge to protect the routes e
 
 After URL and before the controller, as many middlewares can be added as wished
 
+To read the images in proper format, need of the express-formidable
+
+Issues:
+1. User and Admin Panel
+2. why model and atlas name different
+3. populate function
+4. error in showing the image
+5. redirecting to the login page when user dashboard
