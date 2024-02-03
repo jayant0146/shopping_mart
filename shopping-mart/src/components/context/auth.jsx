@@ -12,14 +12,21 @@ const AuthProvider = ({ children }) => {
     axios.defaults.headers.common["Authorization"] = auth?.token;
 
     useEffect(() => {
-        const data = localStorage.getItem("auth");
-        if (data) {
-            const parseData = JSON.parse(data);
-            setAuth({
-                ...auth,
-                user: parseData.user,
-                token: parseData.token,
-            });
+        const storedData = localStorage.getItem("auth");
+        if (storedData) {
+            try {
+                const parseData = JSON.parse(storedData);
+                setAuth({
+                    ...auth,
+                    user: parseData.user,
+                    token: parseData.token,
+                });
+                console.log(JSON.stringify(parseData));
+            } catch (error) {
+                console.error('Error parsing JSON:', error);
+            }
+        } else {
+            console.warn('No data found in localStorage');
         }
         //eslint-disable-next-line
     }, []);

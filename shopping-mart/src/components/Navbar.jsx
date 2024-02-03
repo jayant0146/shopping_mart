@@ -4,8 +4,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartCheckoutSharpIcon from '@mui/icons-material/ShoppingCartCheckoutSharp';
 import Badge from '@mui/material/Badge';
 import { mobile } from "../Responsive"
-import { useNav } from './context/nav';
-
+import { useAuth } from './context/auth';
 
 const Container = styled.div`
   height: 60px;
@@ -77,7 +76,15 @@ const MenuItem = styled.div`
 
 
 const Navbar = () => {
-  const [nav, setNav] = useNav(false);
+  const [auth, setAuth] = useAuth();
+  const handleLogout = () => {
+    setAuth({
+      ...auth,
+      user: null,
+      token: '',
+    })
+    localStorage.removeItem('auth');
+  }
   return (
     <Container>
       <Wrapper>
@@ -93,8 +100,7 @@ const Navbar = () => {
         </Center>
         <Right>
           {
-            nav ? (<><div style={{ cursor: "pointer" }} onClick={() => { setNav(false); localStorage.setItem('nav', false); }}>Log Out</div></>) : (<><a href='/register'> <MenuItem>REGISTER</MenuItem> </a>
-              <a href='/login'> <MenuItem>LOGIN</MenuItem></a></>)
+            auth.user ? (<><div onClick={handleLogout}> <a href='/'> <MenuItem>LOGOUT</MenuItem> </a> </div></>) : (<><a href='/register'> <MenuItem>REGISTER</MenuItem> </a> <a href='/login'> <MenuItem>LOGIN</MenuItem></a></>)
           }
           <a href='/cart'><MenuItem>
             <Badge badgeContent={2} color="primary"><ShoppingCartCheckoutSharpIcon /></Badge>

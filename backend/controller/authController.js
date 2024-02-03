@@ -85,7 +85,7 @@ export const loginController = async (req, res) => {
         }
 
         //token
-        const accessToken = JWT.sign({ id: user._id }, process.env.JWT_SECRETKEY, { expiresIn: "7d" });
+        const token = JWT.sign({ id: user._id }, process.env.JWT_SECRETKEY, { expiresIn: "2h" });
 
         res.status(200).send({
             success: true,
@@ -96,7 +96,7 @@ export const loginController = async (req, res) => {
                 email: user.email,
                 phone: user.phone,
                 adddress: user.address,
-            }, accessToken,
+            }, token,
         })
     } catch (error) {
         console.log(error);

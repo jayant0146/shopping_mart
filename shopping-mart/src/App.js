@@ -37,7 +37,7 @@ const App = () => {
 
         <Routes>
           <Route path="/dashboard" element={<PrivateRoute />} >
-            <Route path="user" element={<Dashboard />} >
+            <Route path="" element={<Dashboard />} >
             </Route>
           </Route>
         </Routes>

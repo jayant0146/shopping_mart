@@ -22,3 +22,5 @@ export default function PrivateRoute() {
 
     return ok ? <Outlet /> : <Spinner />;
 }
+
+//Outlet is used here fir nested routing as in angular

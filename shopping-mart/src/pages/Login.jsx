@@ -2,9 +2,9 @@ import styled from "styled-components";
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios"
-import { useNav } from "../components/context/nav";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useAuth } from "../components/context/auth";
 
 const Container = styled.div`
   width: 100vw;
@@ -64,7 +64,7 @@ const Link = styled.a`
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [nav, setNav] = useNav();
+  const [auth, setAuth] = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -75,8 +75,13 @@ const Login = () => {
       const msg = res.data.message;
       if (res && res.data.success) {
         toast.success("Login Successfully")
-        setNav(true);
-        localStorage.setItem('nav', true);
+        setAuth({
+          ...auth,
+          user: res.data.user,
+          token: res.data.token
+        })
+        const savedata = JSON.stringify({ user: res.data.user, token: res.data.token })
+        localStorage.setItem('auth', savedata);
         navigate('/');
       }
       else toast.warn(msg);
