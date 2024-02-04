@@ -5,6 +5,7 @@ import ShoppingCartCheckoutSharpIcon from '@mui/icons-material/ShoppingCartCheck
 import Badge from '@mui/material/Badge';
 import { mobile } from "../Responsive"
 import { useAuth } from './context/auth';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
   height: 60px;
@@ -74,6 +75,19 @@ const MenuItem = styled.div`
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
 `;
 
+const Dropdown = styled.a`
+  position: relative;
+  display: inline-block;
+`
+
+const DropdownContent = styled.div`
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  z-index: 1;
+  `
+
 
 const Navbar = () => {
   const [auth, setAuth] = useAuth();
@@ -100,8 +114,13 @@ const Navbar = () => {
         </Center>
         <Right>
           {
-            auth.user ? (<><div onClick={handleLogout}> <a href='/'> <MenuItem>LOGOUT</MenuItem> </a> </div></>) : (<><a href='/register'> <MenuItem>REGISTER</MenuItem> </a> <a href='/login'> <MenuItem>LOGIN</MenuItem></a></>)
+            auth.user ? (<Dropdown><li>
+              <Link to={`/dashboard/${auth.user.role === 0 ? "user" : "admin"} `}> DASHBOARD</Link></li>
+              <li onClick={handleLogout}><a href='/'>LOGOUT</a></li>
+            </Dropdown>)
+              : (<><a href='/register'> <MenuItem>REGISTER</MenuItem> </a> <a href='/login'> <MenuItem>LOGIN</MenuItem></a></>)
           }
+
           <a href='/cart'><MenuItem>
             <Badge badgeContent={2} color="primary"><ShoppingCartCheckoutSharpIcon /></Badge>
           </MenuItem></a>

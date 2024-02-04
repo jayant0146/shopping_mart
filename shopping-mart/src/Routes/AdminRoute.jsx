@@ -4,20 +4,20 @@ import axios from "axios";
 import { useAuth } from "../components/context/auth";
 import Spinner from "../components/Spinner";
 
-export default function PrivateRoute() {
+export default function AdminRoute() {
     const [ok, setOk] = useState(false);
     const [auth, setAuth] = useAuth();
 
     useEffect(() => {
         const authCheck = async () => {
-            const res = await axios.get("/api/v1/auth/user-auth");
+            const res = await axios.get("/api/v1/auth/admin-auth");
             if (res.data.ok) {
                 setOk(true);
             } else {
                 setOk(false);
             }
         };
-        if (auth?.token && auth?.user?.role === 0) authCheck();
+        if (auth?.token && auth?.user?.role === 1) authCheck();
     }, [auth?.token]);
 
     return ok ? <Outlet /> : <Spinner path={""} />;

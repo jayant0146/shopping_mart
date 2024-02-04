@@ -21,7 +21,7 @@ const Container = styled.div`
   justify-content: center;
 `;
 
-export default function Spinner() {
+export default function Spinner({ path = "login" }) {
     const [count, setCount] = useState(5);
     const navigate = useNavigate();
     const location = useLocation();
@@ -31,11 +31,11 @@ export default function Spinner() {
             setCount((prevValue) => --prevValue);
         }, 1000);
         count === 0 &&
-            navigate("/login", {
+            navigate(`/${path}`, {
                 state: location.pathname,
             });
         return () => clearInterval(interval);
-    }, [count, navigate, location]);
+    }, [count, navigate, location, path]);
 
 
     return (

@@ -14,6 +14,8 @@ import Page404 from './pages/Page404';
 import ForgotPassword from './pages/ForgotPassword';
 import Dashboard from './pages/User/Dashboard';
 import PrivateRoute from './Routes/PrivateRoute';
+import AdminRoute from './Routes/AdminRoute';
+import Dashboard1 from './pages/Admin/Dashboard';
 
 const App = () => {
   return (
@@ -37,7 +39,14 @@ const App = () => {
 
         <Routes>
           <Route path="/dashboard" element={<PrivateRoute />} >
-            <Route path="" element={<Dashboard />} >
+            <Route path="user" element={<Dashboard />} >
+            </Route>
+          </Route>
+        </Routes>
+
+        <Routes>
+          <Route path="/dashboard" element={<AdminRoute />} >
+            <Route path="admin" element={<Dashboard1 />} >
             </Route>
           </Route>
         </Routes>
