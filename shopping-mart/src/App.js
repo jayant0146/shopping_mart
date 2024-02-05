@@ -16,6 +16,7 @@ import Dashboard from './pages/User/Dashboard';
 import PrivateRoute from './Routes/PrivateRoute';
 import AdminRoute from './Routes/AdminRoute';
 import Dashboard1 from './pages/Admin/Dashboard';
+import CreateCategory from './pages/Admin/CreateCategory';
 
 const App = () => {
   return (
@@ -46,8 +47,8 @@ const App = () => {
 
         <Routes>
           <Route path="/dashboard" element={<AdminRoute />} >
-            <Route path="admin" element={<Dashboard1 />} >
-            </Route>
+            <Route path="admin" element={<Dashboard1 />} />
+            <Route path="admin/create-category" element={<CreateCategory />} />
           </Route>
         </Routes>
 
