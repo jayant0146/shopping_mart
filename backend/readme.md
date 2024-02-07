@@ -27,3 +27,4 @@ Issues:
 3. populate function
 4. error in showing the image
 5. editing updated when refreshed
+6. In create product, suggestions fir searching in the navigation bar
