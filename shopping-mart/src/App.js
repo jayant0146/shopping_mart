@@ -19,6 +19,7 @@ import Dashboard1 from './pages/Admin/Dashboard';
 import CreateCategory from './pages/Admin/CreateCategory';
 import CreateProduct from './pages/Admin/CreateProduct';
 import Products from './pages/Admin/Products';
+import UpdateProduct from './pages/Admin/UpdateProduct';
 
 const App = () => {
   return (
@@ -52,6 +53,7 @@ const App = () => {
             <Route path="admin" element={<Dashboard1 />} />
             <Route path="admin/create-category" element={<CreateCategory />} />
             <Route path="admin/create-product" element={<CreateProduct />} />
+            <Route path="admin/product/:slug" element={<UpdateProduct />} />
             <Route path="admin/products" element={<Products />} />
           </Route>
         </Routes>

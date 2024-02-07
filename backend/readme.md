@@ -28,3 +28,4 @@ Issues:
 4. error in showing the image
 5. editing updated when refreshed
 6. In create product, suggestions fir searching in the navigation bar
+7. Cannot GET /api/v1/product/product-photo/
