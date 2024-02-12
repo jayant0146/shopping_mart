@@ -23,9 +23,8 @@ After URL and before the controller, as many middlewares can be added as wished
 To read the images in proper format, need of the express-formidable
 
 Issues:
-2. why model and atlas name different
-3. populate function
-4. error in showing the image
-5. editing updated when refreshed
+
 6. In create product, suggestions fir searching in the navigation bar
 7. Cannot GET /api/v1/product/product-photo/
+8. Product list updating on refresh not real time
+9. Shipping ka true nhi ho rha

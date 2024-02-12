@@ -46,6 +46,8 @@ const CreateProduct = () => {
             productData.append("quantity", quantity);
             productData.append("photo", photo);
             productData.append("category", category);
+            productData.append("shipping", shipping);
+
             const { data } = axios.post(
                 "/api/v1/product/create-product",
                 productData
@@ -85,10 +87,13 @@ const CreateProduct = () => {
                                 }}
                             >
                                 {categories?.map((c) => (
-                                    <Option key={c._id} value={c._id}>
+                                    < Option key={c._id} value={c._id} >
                                         {c.name}
+
                                     </Option>
-                                ))}
+
+                                ))
+                                }
                             </Select>
 
 
@@ -163,14 +168,14 @@ const CreateProduct = () => {
                                     variant={false}
                                     placeholder="Select Shipping "
                                     size="large"
-                                    showSearch
                                     className="form-select mb-3"
                                     onChange={(value) => {
                                         setShipping(value);
+
                                     }}
                                 >
-                                    <Option value="0">No</Option>
-                                    <Option value="1">Yes</Option>
+                                    <Option value="false">No</Option>
+                                    <Option value="true">Yes</Option>
                                 </Select>
                             </div>
                             <div className="mb-3">
@@ -182,7 +187,7 @@ const CreateProduct = () => {
                         <ToastContainer />
                     </div>
                 </div>
-            </div>
+            </div >
         </>
     );
 };

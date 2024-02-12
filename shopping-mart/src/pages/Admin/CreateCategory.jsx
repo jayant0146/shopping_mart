@@ -19,6 +19,7 @@ const CreateCategory = () => {
             const { data } = await axios.post("/api/v1/category/create-category", { name });
             if (data?.success) {
                 toast.success(data.message);
+                setName("");
                 getAllCategory();
             } else {
                 toast.error(data.message);
@@ -54,6 +55,7 @@ const CreateCategory = () => {
             const { data } = await axios.put(
                 `/api/v1/category/update-category/${selected._id}`, { name: updatedName }
             );
+            console.log("sssssssss", data)
             if (data.success) {
                 toast.success(`${updatedName} is updated`);
                 setSelected(null);
@@ -64,6 +66,7 @@ const CreateCategory = () => {
                 toast.error(data.message);
             }
         } catch (error) {
+            console.log("sssssss", error)
             toast.error("Something went wrong");
         }
     };

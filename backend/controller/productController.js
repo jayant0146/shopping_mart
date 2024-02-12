@@ -8,20 +8,18 @@ export const createProductController = async (req, res) => {
         const { photo } = req.files;
 
         switch (true) {
+            case !category:
+                return res.status(201).send({ error: "Category is Required" });
+            case !photo && photo.size > 100000:
+                return res.status(201).send({ error: "Image is Required and should be less than 1Mb" });
             case !name:
                 return res.status(201).send({ error: "Name is Required" });
             case !description:
                 return res.status(201).send({ error: "Description is Required" });
             case !price:
                 return res.status(201).send({ error: "Price is Required" });
-            case !category:
-                return res.status(201).send({ error: "Category is Required" });
             case !quantity:
                 return res.status(201).send({ error: "Quantity is Required" });
-            case !photo && photo.size > 100000:
-                return res.status(201).send({ error: "Image is Required and should be less than 1Mb" });
-            case !shipping:
-                return res.status(201).send({ error: "Shipping Status is Required" });
         }
 
         const products = new productModel({ ...req.fields, slug: slugify(name) })
@@ -63,8 +61,6 @@ export const updateProductController = async (req, res) => {
                 return res.status(201).send({ error: "Quantity is Required" });
             case !photo && photo.size > 100000:
                 return res.status(201).send({ error: "Image is Required and should be less than 1Mb" });
-            case !shipping:
-                return res.status(201).send({ error: "Shipping Status is Required" });
         }
 
         const products = await productModel.findByIdAndUpdate(req.params.pid, { ...req.fields, slug: slugify(name) }, { new: true })

@@ -43,14 +43,14 @@ export const updateCategoryController = async (req, res) => {
             { new: true }
         );
 
-        res.status(500).send({
+        res.status(200).send({
             success: true,
             message: "Successfully Updated the Category",
             category
         })
     } catch (error) {
-        console.log(error);
-        res.status(201).send({
+
+        res.status(500).send({
             success: false,
             message: "Error while updating the category",
             error
@@ -89,7 +89,7 @@ export const singleCategoryController = async (req, res) => {
     }
     catch (error) {
         console.log(error);
-        res.status(201).send({
+        res.status(501).send({
             success: false,
             message: "Error while getting the Single Category",
             error
@@ -108,7 +108,7 @@ export const deleteCategoryController = async (req, res) => {
     }
     catch (error) {
         console.log(error);
-        res.status(201).send({
+        res.status(501).send({
             success: false,
             message: "Error while deleting the category",
             error
