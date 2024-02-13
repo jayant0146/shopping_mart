@@ -6,6 +6,7 @@ import Badge from '@mui/material/Badge';
 import { mobile } from "../Responsive"
 import { useAuth } from './context/auth';
 import { Link } from 'react-router-dom';
+import Search_navbar from './Search_navbar';
 
 const Container = styled.div`
   height: 60px;
@@ -105,8 +106,9 @@ const Navbar = () => {
         <Left>
           <Language> EN </Language>
           <SearchContainer>
-            <Input placeholder='Search' />
-            <SearchIcon style={{ color: "gray", fontSize: "12px" }} />
+            {/* <Input placeholder='Search' />
+            <SearchIcon style={{ color: "gray", fontSize: "12px" }} /> */}
+            <Search_navbar />
           </SearchContainer>
         </Left>
         <Center>

@@ -21,6 +21,7 @@ import CreateProduct from './pages/Admin/CreateProduct';
 import Products from './pages/Admin/Products';
 import UpdateProduct from './pages/Admin/UpdateProduct';
 import Product_shirts from './components/Product_shirts';
+import Search_keyword_results from './components/Search_keyword_results';
 
 const App = () => {
   return (
@@ -38,8 +39,8 @@ const App = () => {
         </Routes>
 
         <Routes>
-          <Route path="/productlist" element={<ProductList />} >
-          </Route>
+          <Route path="/productlist" element={<ProductList />} />
+          <Route path="/search-keywords" element={<Search_keyword_results />} />
         </Routes>
 
         <Routes>
