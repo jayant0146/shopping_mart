@@ -22,9 +22,7 @@ After URL and before the controller, as many middlewares can be added as wished
 
 To read the images in proper format, need of the express-formidable
 
-Issues:
-
-6. In create product, suggestions fir searching in the navigation bar
-7. Cannot GET /api/v1/product/product-photo/
-8. Product list updating on refresh not real time
-9. Shipping ka true nhi ho rha
+issues:
+1. Products -> Category id to category name
+2. Update product not working
+3. 3 Products to be displayed in a row

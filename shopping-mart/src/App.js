@@ -20,6 +20,7 @@ import CreateCategory from './pages/Admin/CreateCategory';
 import CreateProduct from './pages/Admin/CreateProduct';
 import Products from './pages/Admin/Products';
 import UpdateProduct from './pages/Admin/UpdateProduct';
+import Product_shirts from './components/Product_shirts';
 
 const App = () => {
   return (
@@ -55,6 +56,11 @@ const App = () => {
             <Route path="admin/create-product" element={<CreateProduct />} />
             <Route path="admin/product/:slug" element={<UpdateProduct />} />
             <Route path="admin/products" element={<Products />} />
+          </Route>
+        </Routes>
+
+        <Routes>
+          <Route path="/shirt-product" element={<Product_shirts />} >
           </Route>
         </Routes>
 

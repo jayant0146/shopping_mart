@@ -21,7 +21,7 @@ const AuthProvider = ({ children }) => {
                     user: parseData.user,
                     token: parseData.token,
                 });
-                console.log(JSON.stringify(parseData));
+                // console.log(JSON.stringify(parseData));
             } catch (error) {
                 console.error('Error parsing JSON:', error);
             }

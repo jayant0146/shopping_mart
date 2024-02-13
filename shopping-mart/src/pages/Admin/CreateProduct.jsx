@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import React, { useState, useEffect } from "react";
 import AdminMenu from "./AdminMenu"
 import { ToastContainer, toast } from 'react-toastify';
@@ -6,6 +7,20 @@ import axios from "axios";
 import { Select } from "antd";
 import { useNavigate } from "react-router-dom";
 const { Option } = Select;
+
+const Container = styled.div`
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)
+    ),
+      center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 const CreateProduct = () => {
     const navigate = useNavigate();
@@ -64,8 +79,16 @@ const CreateProduct = () => {
         }
     };
 
+    const onSearch = (value) => {
+        console.log('search:', value);
+    };
+
+    // Filter `option.label` match the user type `input`
+    const filterOption = (input, option) =>
+        (option?.label ?? '').toLowerCase().includes(input.toLowerCase());
+
     return (
-        <>
+        <Container>
             <div className="container-fluid m-3 p-3">
                 <div className="row">
                     <div className="col-md-3">
@@ -75,120 +98,115 @@ const CreateProduct = () => {
                     {/* Searching products */}
                     <div className="col-md-9">
                         <h1>Create Product</h1>
-                        <div className="m-1 w-75">
+                        <div className="mb-3">
                             <Select
-                                variant={false}
-                                placeholder="Select a category"
-                                size="large"
+                                className="w-100"
                                 showSearch
-                                className="form-select mb-3"
+                                placeholder="Create the Product"
+                                optionFilterProp="children"
                                 onChange={(value) => {
                                     setCategory(value);
                                 }}
-                            >
-                                {categories?.map((c) => (
-                                    < Option key={c._id} value={c._id} >
-                                        {c.name}
-
-                                    </Option>
-
-                                ))
-                                }
-                            </Select>
-
-
-                            {/* Uploading photo */}
-                            <div className="mb-3">
-                                <label className="btn btn-outline-secondary col-md-12">
-                                    {photo ? photo.name : "Upload Photo"}
-                                    <input
-                                        type="file"
-                                        name="photo"
-                                        accept="image/*"
-                                        onChange={(e) => setPhoto(e.target.files[0])}
-                                        hidden
-                                    />
-                                </label>
-                            </div>
-
-                            {/* Displaying photo */}
-                            <div className="mb-3">
-                                {photo && (
-                                    <div className="text-center">
-                                        <img
-                                            src={URL.createObjectURL(photo)}
-                                            alt="product_photo"
-                                            height={"200px"}
-                                            className="img img-responsive"
-                                        />
-                                    </div>
-                                )}
-                            </div>
-
-
-                            <div className="mb-3">
-                                <input
-                                    type="text"
-                                    value={name}
-                                    placeholder="write a name"
-                                    className="form-control"
-                                    onChange={(e) => setName(e.target.value)}
-                                />
-                            </div>
-                            <div className="mb-3">
-                                <textarea
-                                    type="text"
-                                    value={description}
-                                    placeholder="write a description"
-                                    className="form-control"
-                                    onChange={(e) => setDescription(e.target.value)}
-                                />
-                            </div>
-
-                            <div className="mb-3">
-                                <input
-                                    type="number"
-                                    value={price}
-                                    placeholder="write a Price"
-                                    className="form-control"
-                                    onChange={(e) => setPrice(e.target.value)}
-                                />
-                            </div>
-                            <div className="mb-3">
-                                <input
-                                    type="number"
-                                    value={quantity}
-                                    placeholder="write a quantity"
-                                    className="form-control"
-                                    onChange={(e) => setQuantity(e.target.value)}
-                                />
-                            </div>
-                            <div className="mb-3">
-                                <Select
-                                    variant={false}
-                                    placeholder="Select Shipping "
-                                    size="large"
-                                    className="form-select mb-3"
-                                    onChange={(value) => {
-                                        setShipping(value);
-
-                                    }}
-                                >
-                                    <Option value="false">No</Option>
-                                    <Option value="true">Yes</Option>
-                                </Select>
-                            </div>
-                            <div className="mb-3">
-                                <button className="btn btn-primary" onClick={handleCreate}>
-                                    CREATE PRODUCT
-                                </button>
-                            </div>
+                                onSearch={onSearch}
+                                filterOption={filterOption}
+                                options={categories?.map((c) => ({
+                                    value: c._id,
+                                    label: c.name
+                                }))} />
                         </div>
-                        <ToastContainer />
+
+
+                        {/* Uploading photo */}
+                        <div className="mb-3">
+                            <label className="btn btn-outline-secondary col-md-12">
+                                {photo ? photo.name : "Upload Photo"}
+                                <input
+                                    type="file"
+                                    name="photo"
+                                    accept="image/*"
+                                    onChange={(e) => setPhoto(e.target.files[0])}
+                                    hidden
+                                />
+                            </label>
+                        </div>
+
+                        {/* Displaying photo */}
+                        <div className="mb-3">
+                            {photo && (
+                                <div className="text-center">
+                                    <img
+                                        src={URL.createObjectURL(photo)}
+                                        alt="product_photo"
+                                        height={"200px"}
+                                        className="img img-responsive"
+                                    />
+                                </div>
+                            )}
+                        </div>
+
+
+                        <div className="mb-3">
+                            <input
+                                type="text"
+                                value={name}
+                                placeholder="write a name"
+                                className="form-control"
+                                onChange={(e) => setName(e.target.value)}
+                            />
+                        </div>
+                        <div className="mb-3">
+                            <textarea
+                                type="text"
+                                value={description}
+                                placeholder="write a description"
+                                className="form-control"
+                                onChange={(e) => setDescription(e.target.value)}
+                            />
+                        </div>
+
+                        <div className="mb-3">
+                            <input
+                                type="number"
+                                value={price}
+                                placeholder="write a Price"
+                                className="form-control"
+                                onChange={(e) => setPrice(e.target.value)}
+                            />
+                        </div>
+                        <div className="mb-3">
+                            <input
+                                type="number"
+                                value={quantity}
+                                placeholder="write a quantity"
+                                className="form-control"
+                                onChange={(e) => setQuantity(e.target.value)}
+                            />
+                        </div>
+                        <div className="mb-3">
+                            <Select
+                                variant={false}
+                                placeholder="Select Shipping "
+                                size="large"
+                                className="form-select mb-3"
+                                onChange={(value) => {
+                                    setShipping(value);
+
+                                }}
+                            >
+                                <Option value="false">No</Option>
+                                <Option value="true">Yes</Option>
+                            </Select>
+                        </div>
+                        <div className="mb-3">
+                            <button className="btn btn-primary" onClick={handleCreate}>
+                                CREATE PRODUCT
+                            </button>
+                        </div>
                     </div>
+                    <ToastContainer />
                 </div>
-            </div >
-        </>
+            </div>
+        </Container>
     );
 };
 

@@ -101,6 +101,15 @@ const UpdateProduct = () => {
             toast.error("Something went wrong");
         }
     };
+
+    const onSearch = (value) => {
+        console.log('search:', value);
+    };
+
+    // Filter `option.label` match the user type `input`
+    const filterOption = (input, option) =>
+        (option?.label ?? '').toLowerCase().includes(input.toLowerCase());
+
     return (
         <>
             <div className="container-fluid m-3 p-3">
@@ -111,7 +120,23 @@ const UpdateProduct = () => {
                     <div className="col-md-9">
                         <h1>Update Product</h1>
                         <div className="m-1 w-75">
-                            <Select
+                            <div className="mb-3">
+                                <Select
+                                    className="w-100"
+                                    showSearch
+                                    placeholder="Update the Category"
+                                    optionFilterProp="children"
+                                    onChange={(value) => {
+                                        setCategory(value);
+                                    }}
+                                    onSearch={onSearch}
+                                    filterOption={filterOption}
+                                    options={categories?.map((c) => ({
+                                        value: c._id,
+                                        label: c.name
+                                    }))} />
+                            </div>
+                            {/* <Select
                                 variant={false}
                                 placeholder="Select a category"
                                 size="large"
@@ -127,7 +152,7 @@ const UpdateProduct = () => {
                                         {c.name}
                                     </Option>
                                 ))}
-                            </Select>
+                            </Select> */}
                             <div className="mb-3">
                                 <label className="btn btn-outline-secondary col-md-12">
                                     {photo ? photo.name : "Upload Photo"}
