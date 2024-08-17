@@ -5,13 +5,14 @@ import {
   Route,
 } from "react-router-dom";
 import Home from './pages/Home'
-import ProductList from './pages/ProductList'
-import Product from './pages/Product'
 import Register from './pages/Register'
 import Login from './pages/Login'
 import Cart from './pages/Cart'
-import Page404 from './pages/Page404';
+import ProductDescription from './pages/ProductDescription'
+import ProductList from './pages/ProductList'
 import ForgotPassword from './pages/ForgotPassword';
+import Page404 from './pages/Page404';
+
 import Dashboard from './pages/User/Dashboard';
 import PrivateRoute from './Routes/PrivateRoute';
 import AdminRoute from './Routes/AdminRoute';
@@ -33,16 +34,13 @@ const App = () => {
           <Route exact path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/product-description" element={<ProductDescription />} />
+          <Route path="/productlist" element={<ProductList />} />
+          <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="*" element={<Page404 />} />
         </Routes>
 
         <Routes>
-          <Route path="/product" element={<Product />} >
-          </Route>
-        </Routes>
-
-        <Routes>
-          <Route path="/productlist" element={<ProductList />} />
           <Route path="/search-keywords" element={<Search_keyword_results />} />
         </Routes>
 
@@ -65,11 +63,6 @@ const App = () => {
 
         <Routes>
           <Route path="/shirt-product" element={<Product_shirts />} >
-          </Route>
-        </Routes>
-
-        <Routes>
-          <Route path="/forgotpassword" element={<ForgotPassword />} >
           </Route>
         </Routes>
 

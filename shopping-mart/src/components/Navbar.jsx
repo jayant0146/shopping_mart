@@ -121,9 +121,9 @@ const Navbar = () => {
               : (<><a href='/register'> <MenuItem>REGISTER</MenuItem> </a> <a href='/login'> <MenuItem>LOGIN</MenuItem></a></>)
           }
 
-          <a href='/cart'><MenuItem>
+          <Link to={"/cart"}> <MenuItem>
             <Badge badgeContent={2} color="primary"><ShoppingCartCheckoutSharpIcon /></Badge>
-          </MenuItem></a>
+          </MenuItem></Link>
         </Right>
       </Wrapper>
     </Container>
