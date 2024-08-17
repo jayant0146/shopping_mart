@@ -6,6 +6,7 @@ import { sliderItems } from '../data';
 import { mobile } from "../Responsive"
 
 const Container = styled.div`
+padding: 1rem;
 width: 100%;
 height: 100vh;
 display: flex;

@@ -29,8 +29,11 @@ const App = () => {
       <BrowserRouter>
 
         <Routes>
-          <Route path="/" element={<Home />} >
-          </Route>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="*" element={<Page404 />} />
         </Routes>
 
         <Routes>
@@ -66,29 +69,10 @@ const App = () => {
         </Routes>
 
         <Routes>
-          <Route path="/register" element={<Register />} >
-          </Route>
-        </Routes>
-
-        <Routes>
-          <Route path="/login" element={<Login />} >
-          </Route>
-        </Routes>
-
-        <Routes>
-          <Route path="/cart" element={<Cart />} >
-          </Route>
-        </Routes>
-
-        <Routes>
           <Route path="/forgotpassword" element={<ForgotPassword />} >
           </Route>
         </Routes>
 
-        <Routes>
-          <Route path="*" element={<Page404 />} >
-          </Route>
-        </Routes>
       </BrowserRouter>
     </div>
   )
