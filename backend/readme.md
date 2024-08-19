@@ -1,3 +1,16 @@
+For backend, npm init -y for package.json
+
+Dependencies Library:
+dotenv file to hide the secret key and other imp stuff
+To read the images in proper format, need of the express-formidable
+
+Browser status
+200 - Successful
+201 - Suceesfully added
+400, 500 - error
+
+Use of CryptoJS-AES to encrypt or decrypt the password, strong encryptong technique
+
 .env file to provide us with the secret key and helps for confidential data like in the payment method
 
 get used to print the data, i.e. response sent by the user
@@ -19,8 +32,6 @@ A middleware function can check if a user is authenticated by examining the pres
 Token comparison, if matched tabhi details show krayenge to protect the routes else no
 
 After URL and before the controller, as many middlewares can be added as wished
-
-To read the images in proper format, need of the express-formidable
 
 issues:
 1. Products -> Category id to category name
