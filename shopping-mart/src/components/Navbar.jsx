@@ -4,7 +4,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartCheckoutSharpIcon from '@mui/icons-material/ShoppingCartCheckoutSharp';
 import Badge from '@mui/material/Badge';
 import { mobile } from "../Responsive"
-import { useAuth } from './context/auth';
+import { AuthContext, useAuth } from './context/auth';
 import { Link } from 'react-router-dom';
 
 const Container = styled.div`
@@ -90,7 +90,7 @@ const DropdownContent = styled.div`
 
 
 const Navbar = () => {
-  const [auth, setAuth] = useAuth();
+  const [auth, setAuth] = useContext(AuthContext)
   const handleLogout = () => {
     setAuth({
       ...auth,

@@ -8,19 +8,20 @@ import userRoutes from "./routes/userRoutes.js"
 // import productRoutes from "./routes/productRoutes.js";
 import dotenv from "dotenv";
 
+// Configuring env file. by default it's the root path, else if in any other path then need to mention that path by dotenv.config({path:''})
 dotenv.config();
 
 const app = express();
 connectDB();
 
-app.use(express.json()); //Without this, application will not take nay json object passed to it in POST 
+app.use(express.json()); //Without this, application will not take any json object passed to it in POST 
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/users', userRoutes);
 // app.use('/api/v1/category', categoryRoutes);
 // app.use('/api/v1/product', productRoutes);
 
 
-//run listen
+//run listen. process by default comes with node
 const port = process.env.PORT || 5000;
 const mode = process.env.DEV_MODE;
 app.listen(port, () => {
