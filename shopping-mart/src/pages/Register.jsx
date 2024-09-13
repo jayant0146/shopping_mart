@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import Navbar from "../components/Navbar";
-import { useScrollTrigger } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios"
@@ -95,10 +93,11 @@ const Register = () => {
   }
   const handleSubmit = async (e) => {
     e.preventDefault(); //To prevent refreshing everytime
-    if (!isValidEmail(email) && email.length !== 0) toast.warn("Enter valid Email Address");
+    if (!isValidEmail(email) && email.length !== 0) {
+      toast.warn("Enter valid Email Address")
+    }
     else if ((!areAllCharactersNumbers(phone) || phone.length !== 10) && phone.length !== 0)
-      toast.warn("Enter valid Phone");
-    // if (phone.length !== 10 && phone.length !== 0) toast.warn("Enter valid Email Address");
+      toast.warn("Enter valid Contact details");
     else {
       try {
         const res = await axios.post('/api/v1/auth/register', { name, email, password, phone, address, answer });

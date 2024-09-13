@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { styled } from 'styled-components'
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartCheckoutSharpIcon from '@mui/icons-material/ShoppingCartCheckoutSharp';
 import Badge from '@mui/material/Badge';
 import { mobile } from "../Responsive"
-import { AuthContext, useAuth } from './context/auth';
+import { AuthContext } from './context/auth';
 import { Link } from 'react-router-dom';
 
 const Container = styled.div`
@@ -80,15 +80,6 @@ const Dropdown = styled.a`
   display: inline-block;
 `
 
-const DropdownContent = styled.div`
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  z-index: 1;
-  `
-
-
 const Navbar = () => {
   const [auth, setAuth] = useContext(AuthContext)
   const handleLogout = () => {
@@ -114,8 +105,8 @@ const Navbar = () => {
         </Center>
         <Right>
           {
-            auth.user ? (<Dropdown><li>
-              <Link to={`/dashboard/${auth.user.role === 0 ? "user" : "admin"} `}> DASHBOARD</Link></li>
+            auth.user ? (<Dropdown>
+              <li> <Link to={`/dashboard/${auth.user.role === 0 ? "user" : "admin"} `}> DASHBOARD</Link> </li>
               <li onClick={handleLogout}><a href='/'>LOGOUT</a></li>
             </Dropdown>)
               : (<><a href='/register'> <MenuItem>REGISTER</MenuItem> </a> <a href='/login'> <MenuItem>LOGIN</MenuItem></a></>)

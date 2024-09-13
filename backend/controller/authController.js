@@ -42,7 +42,14 @@ export const registerController = async (req, res) => {
 		const hashedPassword = await hashPassword(password);
 
 		//save
-		const user = await new userModel({ name, email, phone, address, password: hashedPassword, answer }).save();
+		const user = await new userModel({
+			name,
+			email,
+			phone,
+			address,
+			password: hashedPassword,
+			answer
+		}).save();
 
 		res.status(201).send({
 			success: true,
@@ -88,7 +95,6 @@ export const loginController = async (req, res) => {
 		}
 
 		//tokenss
-		console.log(user);
 		const token = JWT.sign({ id: user._id, isAdmin: user.role }, process.env.JWT_SECRETKEY, {
 			expiresIn: "2d"
 		});
