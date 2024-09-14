@@ -9,9 +9,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	<AuthProvider>
 		<SearchProvider>
-			<React.StrictMode>
-				<App />
-			</React.StrictMode>
+			<App />
 		</SearchProvider>
 	</AuthProvider>
 );

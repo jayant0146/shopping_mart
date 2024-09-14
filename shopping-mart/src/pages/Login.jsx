@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -66,7 +66,9 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [auth, setAuth] = useAuth();
   const navigate = useNavigate();
-  const location = useLocation();
+
+  if(auth?.user) 
+    navigate("/");
 
   const handleSubmit = async (e) => {
     e.preventDefault();

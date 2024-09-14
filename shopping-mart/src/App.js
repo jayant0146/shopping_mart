@@ -32,21 +32,10 @@ const App = () => {
 					<Route path="/product-description" element={<ProductDescription />} />
 					<Route path="/productlist" element={<ProductList />} />
 					<Route path="/forgotpassword" element={<ForgotPassword />} />
-					<Route path="*" element={<Page404 />} />
-				</Routes>
 
-				<Routes>
-					{/* eslint-disable-next-line */}
-					<Route path="/search-keywords" element={<Search_keyword_results />} />
-				</Routes>
-
-				<Routes>
 					<Route path="/dashboard" element={<PrivateRoute />}>
-						<Route path="user" element={<Dashboard />}></Route>
+						<Route path="user" element={<Dashboard />} />
 					</Route>
-				</Routes>
-
-				<Routes>
 					<Route path="/dashboard" element={<AdminRoute />}>
 						<Route path="admin" element={<Dashboard1 />} />
 						<Route path="admin/create-category" element={<CreateCategory />} />
@@ -54,6 +43,13 @@ const App = () => {
 						<Route path="admin/product/:slug" element={<UpdateProduct />} />
 						<Route path="admin/products" element={<Products />} />
 					</Route>
+
+					<Route path="*" element={<Page404 />} />
+				</Routes>
+
+				<Routes>
+					{/* eslint-disable-next-line */}
+					<Route path="/search-keywords" element={<Search_keyword_results />} />
 				</Routes>
 
 				<Routes>

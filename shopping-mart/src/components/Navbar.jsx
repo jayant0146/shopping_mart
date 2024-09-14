@@ -82,6 +82,7 @@ const Dropdown = styled.a`
 
 const Navbar = () => {
   const [auth, setAuth] = useContext(AuthContext)
+  // const [auth, setAuth] = useAuth()
   const handleLogout = () => {
     setAuth({
       ...auth,
@@ -105,11 +106,12 @@ const Navbar = () => {
         </Center>
         <Right>
           {
-            auth.user ? (<Dropdown>
+            auth?.user ? (<Dropdown>
               <li> <Link to={`/dashboard/${auth.user.role === 0 ? "user" : "admin"} `}> DASHBOARD</Link> </li>
-              <li onClick={handleLogout}><a href='/'>LOGOUT</a></li>
+              <li onClick={handleLogout}><a href='/login'>LOGOUT</a></li>
             </Dropdown>)
-              : (<><a href='/register'> <MenuItem>REGISTER</MenuItem> </a> <a href='/login'> <MenuItem>LOGIN</MenuItem></a></>)
+              : (<> <a href='/register'> <MenuItem>REGISTER</MenuItem> </a> 
+                  <a href='/login'> <MenuItem>LOGIN</MenuItem> </a> </>)
           }
 
           <Link to={"/cart"}> <MenuItem>

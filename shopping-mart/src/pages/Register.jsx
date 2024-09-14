@@ -77,7 +77,7 @@ const Register = () => {
   const [address, setAddress] = useState('');
   const [answer, setAnswer] = useState('');
 
-  const navigate = useNavigate();
+  const navigate = useNavigate(); //variable creation,because useNavigate is the hook
   function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
@@ -100,6 +100,8 @@ const Register = () => {
       toast.warn("Enter valid Contact details");
     else {
       try {
+        // Since after auth, in register url there is the post method usage, that's why axios.post 
+        // If from package.json we'll remove the proxy then need to provuide that local host address over here as well in post.
         const res = await axios.post('/api/v1/auth/register', { name, email, password, phone, address, answer });
         const msg = res.data.message;
         if (res && res.data.success) {

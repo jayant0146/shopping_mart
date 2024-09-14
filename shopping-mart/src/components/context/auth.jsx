@@ -12,6 +12,7 @@ const AuthProvider = ({ children }) => {
     //default axios
     axios.defaults.headers.common["Authorization"] = auth?.token;
 
+    // this useEffect will run only once at every refresh of the login page, after that no effect
     useEffect(() => {
         const storedData = localStorage.getItem("auth");
         if (storedData) {
