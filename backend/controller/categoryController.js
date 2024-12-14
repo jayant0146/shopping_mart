@@ -1,5 +1,5 @@
 import categoryModel from "../models/categoryModel.js";
-import slugify from "slug"
+import slug from "slug"
 
 export const createCategoryController = async (req, res) => {
     try {
@@ -7,7 +7,7 @@ export const createCategoryController = async (req, res) => {
         if (!name) {
             return res.status(401).send({ message: "Name is Required" })
         }
-        const existingCategory = await categoryModel.findOne({ name })
+        const existingCategory = await categoryModel.findOne({ slug:name })
         if (existingCategory) {
             return res.status(200).send({
                 success: true,
@@ -15,7 +15,7 @@ export const createCategoryController = async (req, res) => {
             })
         }
 
-        const category = await new categoryModel({ name, slug: slugify(name) }).save();
+        const category = await new categoryModel({ name, slug:name }).save();
         res.status(200).send({
             success: true,
             message: "New Category Created",
@@ -39,7 +39,7 @@ export const updateCategoryController = async (req, res) => {
         const { id } = req.params;
         const category = await categoryModel.findByIdAndUpdate(
             id,
-            { name, slug: slugify(name) },
+            { name, slug: name },
             { new: true }
         );
 
@@ -61,7 +61,7 @@ export const updateCategoryController = async (req, res) => {
 
 export const categoryController = async (req, res) => {
     try {
-        const category = await categoryModel.find({});
+        const category = await categoryModel.find({});        
         res.status(200).send({
             success: true,
             message: "Successfully listing all the categories",

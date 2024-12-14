@@ -22,7 +22,7 @@ const Container = styled.div`
   justify-content: center;
 `;
 
-const CreateProduct = () => {
+const AdminCreateProduct = () => {
     const navigate = useNavigate();
     const [categories, setCategories] = useState([]);
     const [name, setName] = useState("");
@@ -210,4 +210,4 @@ const CreateProduct = () => {
     );
 };
 
-export default CreateProduct;
+export default AdminCreateProduct;

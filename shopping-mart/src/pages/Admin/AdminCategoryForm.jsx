@@ -1,6 +1,6 @@
 import React from "react";
 
-const CategoryForm = ({ handleSubmit, value, setValue }) => {
+const AdminCategoryForm = ({ handleSubmit, value, setValue }) => {
     return (
         <>
             <form onSubmit={handleSubmit}>
@@ -22,4 +22,4 @@ const CategoryForm = ({ handleSubmit, value, setValue }) => {
     );
 };
 
-export default CategoryForm;
+export default AdminCategoryForm;

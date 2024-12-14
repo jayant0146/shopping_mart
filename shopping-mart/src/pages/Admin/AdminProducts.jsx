@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Link } from "react-router-dom";
 import AdminMenu from "./AdminMenu";
 
-const Products = () => {
+const AdminProducts = () => {
     const [products, setProducts] = useState([]);
 
     //getall products
@@ -61,4 +61,4 @@ const Products = () => {
     );
 };
 
-export default Products;
+export default AdminProducts;

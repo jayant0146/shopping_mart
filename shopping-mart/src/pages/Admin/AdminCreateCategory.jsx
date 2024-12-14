@@ -2,16 +2,17 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Modal } from "antd";
 import AdminMenu from "./AdminMenu";
-import CategoryForm from "./CategoryForm";
+import AdminCategoryForm from "./AdminCategoryForm";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const CreateCategory = () => {
+const AdminCreateCategory = () => {
     const [categories, setCategories] = useState([]); //for all the categories
     const [name, setName] = useState("");             //
     const [visible, setVisible] = useState(false);    //state for modal
     const [selected, setSelected] = useState(null);   // For selected ategory to update
     const [updatedName, setUpdatedName] = useState("");//Updated names of the categories
+    
     //handle Form
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -55,7 +56,6 @@ const CreateCategory = () => {
             const { data } = await axios.put(
                 `/api/v1/category/update-category/${selected._id}`, { name: updatedName }
             );
-            console.log("sssssssss", data)
             if (data.success) {
                 toast.success(`${updatedName} is updated`);
                 setSelected(null);
@@ -66,10 +66,10 @@ const CreateCategory = () => {
                 toast.error(data.message);
             }
         } catch (error) {
-            console.log("sssssss", error)
             toast.error("Something went wrong");
         }
     };
+
     //delete category
     const handleDelete = async (pId) => {
         try {
@@ -98,7 +98,7 @@ const CreateCategory = () => {
                     <div className="col-md-9">
                         <h1>Manage Category</h1>
                         <div className="p-3 w-50">
-                            <CategoryForm
+                            <AdminCategoryForm
                                 handleSubmit={handleSubmit}
                                 value={name}
                                 setValue={setName} />
@@ -147,7 +147,7 @@ const CreateCategory = () => {
                             footer={null}
                             open={visible}
                         >
-                            <CategoryForm
+                            <AdminCategoryForm
                                 value={updatedName}
                                 setValue={setUpdatedName}
                                 handleSubmit={handleUpdate}
@@ -161,4 +161,4 @@ const CreateCategory = () => {
     );
 };
 
-export default CreateCategory;
+export default AdminCreateCategory;

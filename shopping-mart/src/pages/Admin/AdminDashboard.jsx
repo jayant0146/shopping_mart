@@ -1,7 +1,7 @@
 import React from "react";
 import AdminMenu from "./AdminMenu";
 import { useAuth } from "../../components/context/auth";
-const Dashboard1 = () => {
+const AdminDashboard = () => {
     const [auth] = useAuth();
     return (
         <>
@@ -23,4 +23,4 @@ const Dashboard1 = () => {
     );
 };
 
-export default Dashboard1;
+export default AdminDashboard;
