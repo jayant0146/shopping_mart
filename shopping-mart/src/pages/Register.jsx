@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import Navbar from "../components/Navbar";
-import { useScrollTrigger } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios"
@@ -79,7 +77,7 @@ const Register = () => {
   const [address, setAddress] = useState('');
   const [answer, setAnswer] = useState('');
 
-  const navigate = useNavigate();
+  const navigate = useNavigate(); //variable creation,because useNavigate is the hook
   function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
@@ -95,12 +93,15 @@ const Register = () => {
   }
   const handleSubmit = async (e) => {
     e.preventDefault(); //To prevent refreshing everytime
-    if (!isValidEmail(email) && email.length !== 0) toast.warn("Enter valid Email Address");
+    if (!isValidEmail(email) && email.length !== 0) {
+      toast.warn("Enter valid Email Address")
+    }
     else if ((!areAllCharactersNumbers(phone) || phone.length !== 10) && phone.length !== 0)
-      toast.warn("Enter valid Phone");
-    // if (phone.length !== 10 && phone.length !== 0) toast.warn("Enter valid Email Address");
+      toast.warn("Enter valid Contact details");
     else {
       try {
+        // Since after auth, in register url there is the post method usage, that's why axios.post 
+        // If from package.json we'll remove the proxy then need to provuide that local host address over here as well in post.
         const res = await axios.post('/api/v1/auth/register', { name, email, password, phone, address, answer });
         const msg = res.data.message;
         if (res && res.data.success) {

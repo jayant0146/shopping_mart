@@ -1,13 +1,28 @@
 For backend, npm init -y for package.json
+And we can require the packages, but as soon we change type to module in package.json then in ES6 the require is not visible. We need to replace require with import then.
 
 Dependencies Library:
-dotenv file to hide the secret key and other imp stuff
+dotenv file to hide the secret key and other imp stuff. For basically env file
 To read the images in proper format, need of the express-formidable
+morgan package tells about which URL is hit recently. To show the API request in console.
 
 Browser status
 200 - Successful
 201 - Suceesfully added
 400, 500 - error
+401 - Unauthorized client error response, lacks valid authentication credentials
+
+URI: uniform resource identifier and URL: uniform resource locator. A URI can be a name, locator, or both for an online resource where a URL is just the locator. URLs are a subset of URIs.
+
+If get method, then req is empty. And if post method then the req.body contains the data we're destructuring.
+
+(req, res, next) - next is always there when performing middlewares. Never res.send whenever in middleware instead call next(). res.send() is there only when need to handle the errors. next() calls the middleware one after the other till the time it actually encounters some controller.
+Also while res.send(), return is not mandatory...
+
+
+If while passing the objects, key and value pairs are same then write it only once, and if they differ then write the key:value like this. FOr example follow the value of user from the registerController.
+While saving the data into the model, It's key names should exactly match the paramters passed while saving, else it will not work.
+
 
 Use of CryptoJS-AES to encrypt or decrypt the password, strong encryptong technique
 

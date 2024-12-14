@@ -2,6 +2,7 @@ import { useState, useEffect, useContext, createContext } from "react";
 import axios from "axios";
 
 const AuthContext = createContext();
+
 const AuthProvider = ({ children }) => {
     const [auth, setAuth] = useState({
         user: null,
@@ -11,6 +12,7 @@ const AuthProvider = ({ children }) => {
     //default axios
     axios.defaults.headers.common["Authorization"] = auth?.token;
 
+    // this useEffect will run only once at every refresh of the login page, after that no effect
     useEffect(() => {
         const storedData = localStorage.getItem("auth");
         if (storedData) {
@@ -40,4 +42,4 @@ const AuthProvider = ({ children }) => {
 // custom hook
 const useAuth = () => useContext(AuthContext);
 
-export { useAuth, AuthProvider };
+export { useAuth, AuthProvider, AuthContext };
