@@ -5,10 +5,9 @@ import { allProductsController, createProductController, deleteProductController
 
 const router = express.Router();
 
-router.post('/create-product', requiresSignin, isAdmin, formidable(), createProductController);
+router.post('/create-product',  requiresSignin, isAdmin, formidable(), createProductController);
 
 router.put('/update-product/:pid', requiresSignin, isAdmin, formidable(), updateProductController);
-
 
 router.get('/get-products', allProductsController);
 
@@ -28,4 +27,5 @@ router.get("/product-list/:page", productListController);
 
 //search product
 router.get("/search/:keyword", searchProductController);
+
 export default router;

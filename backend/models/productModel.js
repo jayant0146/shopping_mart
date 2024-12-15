@@ -7,6 +7,7 @@ const productSchema = new mongoose.Schema({
     },
     slug: {
         type: String,
+        lowercase: true,
         required: true,
     },
     description: {
@@ -18,8 +19,8 @@ const productSchema = new mongoose.Schema({
         requried: true
     },
     category: {
-        type: mongoose.ObjectId,
-        ref: "Category",
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "category",
         required: true
     },
     quantity: {

@@ -18,6 +18,7 @@ const AdminProducts = () => {
             toast.error("Something Went Wrong");
         }
     };
+    
 
     //lifecycle method
     useEffect(() => {
@@ -41,7 +42,7 @@ const AdminProducts = () => {
                             >
                                 <div className="card" style={{ width: "18rem", height: "100 %" }}>
                                     <img
-                                        src={`/api/v1/product/product-photo/${p._id}`}
+                                        src={`/api/v1/product/product-photo/${p._id}?t=${Date.now()}`}
                                         className="card-img-top"
                                         alt={p.name}
                                     />

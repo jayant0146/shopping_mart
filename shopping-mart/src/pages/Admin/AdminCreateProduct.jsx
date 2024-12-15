@@ -42,7 +42,7 @@ const AdminCreateProduct = () => {
             }
         } catch (error) {
             console.log(error);
-            toast.error("Something wwent wrong in getting catgeory");
+            toast.error("Something went wrong in getting catgeory");
         }
     };
 
@@ -63,15 +63,17 @@ const AdminCreateProduct = () => {
             productData.append("category", category);
             productData.append("shipping", shipping);
 
-            const { data } = axios.post(
+            const {data} = await axios.post(
                 "/api/v1/product/create-product",
                 productData
             );
+            console.log(data);
+            
             if (data?.success) {
-                toast.error(data?.message);
-            } else {
                 toast.success("Product Created Successfully");
                 navigate("/dashboard/admin/products");
+            } else {
+                toast.error(data?.message);
             }
         } catch (error) {
             console.log(error);
@@ -149,16 +151,17 @@ const AdminCreateProduct = () => {
                             <input
                                 type="text"
                                 value={name}
-                                placeholder="write a name"
+                                placeholder="Product Name"
                                 className="form-control"
                                 onChange={(e) => setName(e.target.value)}
                             />
                         </div>
+
                         <div className="mb-3">
                             <textarea
                                 type="text"
                                 value={description}
-                                placeholder="write a description"
+                                placeholder="Product Description"
                                 className="form-control"
                                 onChange={(e) => setDescription(e.target.value)}
                             />
@@ -168,20 +171,22 @@ const AdminCreateProduct = () => {
                             <input
                                 type="number"
                                 value={price}
-                                placeholder="write a Price"
+                                placeholder="Product Price"
                                 className="form-control"
                                 onChange={(e) => setPrice(e.target.value)}
                             />
                         </div>
+
                         <div className="mb-3">
                             <input
                                 type="number"
                                 value={quantity}
-                                placeholder="write a quantity"
+                                placeholder="Quantity"
                                 className="form-control"
                                 onChange={(e) => setQuantity(e.target.value)}
                             />
                         </div>
+
                         <div className="mb-3">
                             <Select
                                 variant={false}
@@ -189,14 +194,14 @@ const AdminCreateProduct = () => {
                                 size="large"
                                 className="form-select mb-3"
                                 onChange={(value) => {
-                                    setShipping(value);
-
+                                    setShipping(value); 
                                 }}
                             >
                                 <Option value="false">No</Option>
                                 <Option value="true">Yes</Option>
                             </Select>
                         </div>
+
                         <div className="mb-3">
                             <button className="btn btn-primary" onClick={handleCreate}>
                                 CREATE PRODUCT
